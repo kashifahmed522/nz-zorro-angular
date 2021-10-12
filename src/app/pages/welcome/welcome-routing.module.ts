@@ -5,15 +5,11 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { IconsProviderModule } from 'src/app/icons-provider.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WelcomeComponent } from './welcome.component';
-import { LoginComponent } from './components/login/login.component';
-import { MapComponent } from './components/map/map.component';
-import { StudentComponent } from './components/student/student.component';
+import { SerachComponent } from './components/serach/serach.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'map', component: MapComponent },
-  { path: 'student', component: StudentComponent },
+  // { path: '', component: WelcomeComponent },
+  { path: '', component: SerachComponent },
 ];
 
 @NgModule({

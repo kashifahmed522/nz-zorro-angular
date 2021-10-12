@@ -1,0 +1,8 @@
+.heading,
+.search-block {
+  padding: 24px 24px 0 24px;
+}
+
+.search-block {
+  padding: 0 24px 0 24px;
+}

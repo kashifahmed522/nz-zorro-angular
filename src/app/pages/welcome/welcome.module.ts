@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { LoginComponent } from './components/login/login.component';
 
 import { WelcomeRoutingModule } from './welcome-routing.module';
 
@@ -12,11 +11,10 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'src/app/NgZorroAntdModule';
 import { AgmCoreModule } from '@agm/core'
-import { MapComponent } from './components/map/map.component';
-import { StudentComponent } from './components/student/student.component';
-import { TeamManagementService } from './services/team-management.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
+import { SerachComponent } from './components/serach/serach.component';
+import { CommonComponent } from './components/common/common.component';  
 
 @NgModule({
   imports: [
@@ -36,11 +34,10 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: [
     WelcomeComponent,
-    LoginComponent,
-    MapComponent,
-    StudentComponent,
+    SerachComponent,
+    CommonComponent,
   ],
-  providers: [TeamManagementService],
+  providers: [],
   exports: [WelcomeComponent]
 })
 export class WelcomeModule { }
