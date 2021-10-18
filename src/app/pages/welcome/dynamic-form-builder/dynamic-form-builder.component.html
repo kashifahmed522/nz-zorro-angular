@@ -1,6 +1,6 @@
 <form nz-form [formGroup]="formGroup" class="form-horizontal">
   <div [ngClass]="'grid grid-' + grid">
-    <div *ngFor="let field of fields">
+    <div *ngFor="let field of fields" [ngClass]="field?.className" [ngStyle]="{'grid-column': field?.gridColumn}">
       <field-builder [field]="field" [form]="formGroup"></field-builder>
     </div>
   </div>

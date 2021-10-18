@@ -10,7 +10,7 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  grid: number = 2;
+  grid: number = 3;
 
   public dynamicFormFieldsJSON = [
     {
@@ -19,6 +19,16 @@ export class LayoutComponent implements OnInit {
       label: 'First Name',
       value: '',
       required: true,
+      className: 'firstName-className',
+      gridColumn: '1 / span 3',
+    },
+    {
+      type: 'text',
+      name: 'lastName',
+      label: 'Last Name',
+      value: '',
+      required: true,
+      className: 'lastName-className',
     },
     {
       type: 'date',
@@ -26,6 +36,7 @@ export class LayoutComponent implements OnInit {
       label: 'Birth date',
       value: '2020-02-15',
       required: true,
+      className: 'lastName-className',
       dateFormat: 'YYYY-MM-dd',
       placeholder: 'Please select DOB',
     },
@@ -37,6 +48,7 @@ export class LayoutComponent implements OnInit {
       regex:
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       required: true,
+      className: 'email-className',
     },
     {
       type: 'dropdown',
@@ -44,6 +56,7 @@ export class LayoutComponent implements OnInit {
       label: 'Country',
       value: 'in',
       required: true,
+      className: 'country-className',
       multiSelect: false,
       options: [
         { key: 'in', label: 'India' },
@@ -58,6 +71,7 @@ export class LayoutComponent implements OnInit {
       label: 'Gender',
       value: 'm',
       required: true,
+      className: 'gender-className',
       options: [
         { key: 'm', label: 'Male' },
         { key: 'f', label: 'Female' },
@@ -68,6 +82,7 @@ export class LayoutComponent implements OnInit {
       name: 'hobby',
       label: 'Hobby',
       required: true,
+      className: 'hobby-className',
       options: [
         { key: 'f', label: 'Fishing' },
         { key: 'c', label: 'Cooking' },
@@ -79,15 +94,18 @@ export class LayoutComponent implements OnInit {
       label: 'Comments',
       value: '',
       required: true,
+      className: 'comments-className',
       placeholder: 'Comments...',
+      gridColumn: '1 / span 3',
     },
-    {
-      type: 'file',
-      name: 'picture',
-      label: 'Picture',
-      required: false,
-      onUpload: this.onUpload.bind(this),
-    },
+    // {
+    //   type: 'file',
+    //   name: 'picture',
+    //   label: 'Picture',
+    //   required: false,
+    //   className:"picture-className",
+    //   onUpload: this.onUpload.bind(this),
+    // },
   ];
 
   public dynamicFormFieldsJSONContact = [
