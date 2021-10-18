@@ -1,25 +1,27 @@
 <div class="form" [formGroup]="form">
   <nz-form-item>
-    <!-- <nz-form-label [nzSpan]="24" [nzFor]="field.label" [nzRequired]="field?.required" [attr.for]="field.label"> -->
+    <!-- <nz-form-label [nzSpan]="24" [nzFor]="field?.label" [nzRequired]="field?.required" [attr.for]="field?.label"> -->
     <!-- <strong class="text-danger" *ngIf="field?.required && form.get(field.name).invalid">*</strong> -->
-    <nz-form-label [nzSpan]="24" [nzFor]="field.label" [attr.for]="field.label">
-      {{ field.label }}
+    <nz-form-label [nzSpan]="24" [nzFor]="field?.label" [attr.for]="field?.label">
+      {{ field?.label }}
       <strong class="text-danger" *ngIf="field?.required">*</strong>
     </nz-form-label>
 
     <ng-container [ngSwitch]="field.type">
-      <nz-form-control [nzSpan]="24" [nzErrorTip]="field.label">
+      <nz-form-control [nzSpan]="24" [nzErrorTip]="field?.label">
         <textbox *ngSwitchCase="'text'" [field]="field" [form]="form.get(field.name)"></textbox>
         <textbox *ngSwitchCase="'date'" [field]="field" [form]="form.get(field.name)"></textbox>
+        <textbox *ngSwitchCase="'time'" [field]="field" [form]="form.get(field.name)"></textbox>
         <dropdown *ngSwitchCase="'dropdown'" [field]="field" [form]="form.get(field.name)"></dropdown>
         <checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form.get(field.name)"></checkbox>
         <radio *ngSwitchCase="'radio'" [field]="field" [form]="form.get(field.name)"></radio>
         <textbox *ngSwitchCase="'textarea'" [field]="field" [form]="form.get(field.name)"></textbox>
         <file *ngSwitchCase="'file'" [field]="field" [form]="form.get(field.name)"></file>
+        <custom-button *ngSwitchCase="'button'" [field]="field" [form]="form.get(field.name)"></custom-button>
       </nz-form-control>
     </ng-container>
   </nz-form-item>
   <div class="danger-text" *ngIf="!isValid && isDirty">
-    {{ field.label }} is required
+    {{ field?.label }} is required
   </div>
 </div>

@@ -1,133 +1,99 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 @Component({
   selector: 'app-common',
   templateUrl: './common.component.html',
   styleUrls: ['./common.component.css'],
 })
 export class CommonComponent implements OnInit {
-  filterForm: FormGroup | undefined;
-  filterFields: any[] | undefined;
+  validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  @Input() title!: string;
+  @Input() template!: string;
+  @Input() radioValues!: any[];
+  @Input() radioValueIndex!: number;
+  @Output() outPutSearch = new EventEmitter();
 
-  ngOnInit() {
-    var data = {
-      firstName: 'Mohammad',
-      birthDate: '2020-02-15',
-      email: 'tasleembca31@gmail.com',
-      picture: '',
-      country: 'in',
-      gender: 'm',
-      hobby: { f: true, c: true },
-    };
+  @Input()
+  dynamicFormFields!: any;
+  @Input()
+  grid: any;
 
-    this.filterFields = [
-      {
-        key: 'common',
-        title: 'main fields',
-        group: [
-          {
-            key: 'createdAt',
-            title: 'Create Date',
-            type: 'date',
-          },
-          {
-            key: 'individualPerson',
-            title: 'Physical Person',
-            group: [
-              {
-                key: 'firstname',
-                title: 'First Name',
-                type: 'text',
-              },
-              {
-                key: 'lastname',
-                title: 'Last Name',
-                type: 'text',
-              },
-              {
-                key: 'phone',
-                title: 'Phone Number',
-                type: 'text',
-              },
-              {
-                key: 'citizenshipCountry',
-                title: 'Country',
-                type: 'text',
-              },
-            ],
-          },
-          {
-            key: 'legalPerson',
-            title: 'Legal Person',
-            group: [
-              {
-                key: 'brandname',
-                title: 'Brand Name',
-                type: 'text',
-              },
-              {
-                key: 'fullname',
-                title: 'Full Name',
-                type: 'text',
-              },
-              {
-                key: 'phone',
-                title: 'Phone',
-                type: 'text',
-              },
-              {
-                key: 'registrationCountry',
-                title: 'Country',
-                type: 'text',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        key: 'gender',
-        title: 'Gender',
-        group: [
-          {
-            key: 'gender',
-            title: 'Male',
-            type: 'radio',
-          },
-          {
-            key: 'gender',
-            title: 'Female',
-            type: 'radio',
-          },
-        ],
-      },
-    ];
+  @Output() getLatestFormData = new EventEmitter();
 
-    this.filterForm = this.generateFilterForm();
+  public form: FormGroup;
+  unsubcribe: any;
+
+  // public dynamicFormFields = this.dynamicFormFields;
+
+  LatestFormData(data: any) {
+    console.log('data :>> ', data);
   }
 
-  generateFilterForm(): FormGroup {
-    const baseForm = this.fb.group({});
-    this.filterFields?.forEach((field) => {
-      baseForm.addControl(field.key, this.generateFormGroup(baseForm, field));
+  constructor() {
+    console.log('dynamicFormFields :>> ', this.dynamicFormFields);
+    this.form = new FormGroup({
+      dynamicFormFields: new FormControl(
+        JSON.stringify(this.dynamicFormFields)
+      ),
     });
-    console.log(baseForm);
-    return baseForm;
+    this.unsubcribe = this.form.valueChanges.subscribe((update) => {
+      console.log(update);
+      this.dynamicFormFields = JSON.parse(update.dynamicFormFields);
+    });
+  }
+  ngOnInit() {
+    this.form = new FormGroup({});
+    this.dynamicFormFields?.forEach(
+      (x: {
+        type: string;
+        name: string;
+        options: { key: string }[];
+        value: any;
+        required: any;
+      }) => {
+        if (x.type == 'checkbox') {
+          this.form.addControl(x.name, new FormGroup({}));
+          x.options.forEach((o: { key: string }) => {
+            (this.form.get(x.name) as FormGroup).addControl(
+              o.key,
+              new FormControl(false)
+            );
+          });
+        } else {
+          this.form.addControl(
+            x.name,
+            new FormControl(
+              x.value || '',
+              x.required ? Validators.required : null
+            )
+          );
+        }
+      }
+    );
+    this.formChanges();
   }
 
-  generateFormGroup(
-    baseForm: FormGroup,
-    field: { group: any[] }
-  ): FormGroup | FormControl {
-    if (field.group) {
-      const formGroup = this.fb.group({});
-      field.group.forEach((item) => {
-        formGroup.addControl(item.key, this.generateFormGroup(formGroup, item));
-      });
-      return formGroup;
-    }
+  formChanges() {
+    this.form.valueChanges.subscribe((result: any) =>
+      this.getLatestFormData.emit(result)
+    );
+  }
 
-    return new FormControl('');
+  onUpload(e: any) {
+    console.log(e);
+  }
+
+  getFields() {
+    return this.dynamicFormFields;
+  }
+
+  ngDistroy() {
+    this.unsubcribe();
   }
 }

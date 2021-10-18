@@ -1,0 +1,102 @@
+<div class="search-jobs">
+  <app-common
+    [dynamicFormFields]="dynamicFormFieldsJSON"
+    (getLatestFormData)="LatestFormData($event)"
+    [grid]="grid"
+    title="Search Template"
+  >
+  </app-common>
+</div>
+
+<div class="new-country-request pr-20 pl-20 box-shadow">
+  <ng-container *ngIf="isFound; else elseTemplate">
+    <div class="">
+      <h2 class="heading">New CASS Country Request</h2>
+    </div>
+    <p class="">
+      <!-- <b>{{ outPutSearchData?.country }}</b> -->
+       is a New CASS Country Operation.
+      Whose schedule hasn't been created.
+    </p>
+    <div class="">
+      <button nz-button nzType="primary" routerLink="/search/jobs">
+        Create job
+      </button>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="search-template">Billing Job Templates</div>
+    <app-table></app-table>
+  </ng-template>
+</div>
+
+<!-- <div class="search-component">
+  <div class="card">
+    <h2 class="card-header">{{ title }}</h2>
+    <div class="card-body_1">
+      <form [formGroup]="form">
+        <dynamic-form-builder
+          [formGroup]="form"
+          [fields]="getFields()"
+          [grid]="grid"
+        ></dynamic-form-builder>
+      </form>
+    </div>
+  </div>
+</div> -->
+<!-- {{ form?.value | json }} -->
+
+<!-- <div class="search-component">
+  <h2 class="heading">{{ title }}</h2>
+  <nz-divider style="margin: 10px 0"></nz-divider>
+  <div class="search-block">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <div class="form-block">
+        <div style="width: 230px">
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired>
+              CASS Operation Country
+            </nz-form-label>
+            <nz-form-control nzSpan="" nzErrorTip="Please select a country">
+              <nz-select
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a country"
+                formControlName="country"
+                (ngModelChange)="changeCity($event)"
+              >
+                <nz-option
+                  *ngFor="let country of countries"
+                  nzLabel="{{ country.name }}"
+                  nzValue="{{ country.name }}"
+                >
+                  {{ country.name }}
+                </nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzRequired>
+              {{ template }}
+            </nz-form-label>
+            <nz-form-control [nzSpan]="24">
+              <nz-radio-group formControlName="templates">
+                <label
+                  nz-radio
+                  *ngFor="let val of radioValues"
+                  [nzValue]="val"
+                  >{{ val }}</label
+                >
+              </nz-radio-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <button nz-button nzType="primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div> -->

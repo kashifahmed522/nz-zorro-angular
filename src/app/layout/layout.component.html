@@ -21,37 +21,27 @@
     >
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
-          <li nz-menu-item>
-            <i nz-icon nzType="file"></i>
-            <span>
-              <a routerLink="/search">
-                {{ "Create New Jobs" | uppercase }}
-              </a>
-            </span>
-          </li>
-          <li nz-menu-item>
-            <i nz-icon nzType="file"></i>
-            <span>
-              <a routerLink="/">
-                {{ "Monitoring" | uppercase }}
-              </a>
-            </span>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/search">Search</a>
           </li>
           <!-- <li nz-menu-item nzMatchRouter>
-            <a routerLink="/search">{{ "Create New Jobs" | uppercase }}</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/">{{ "Monitoring" | uppercase }}</a>
-          </li> -->
+              <a routerLink="/welcome/login">Login</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/welcome/map">Map</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/welcome/student">Student</a>
+            </li> -->
         </ul>
       </li>
       <!-- <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-            <ul>
-              <li nz-menu-item nzMatchRouter>
-                <a>Basic Form</a>
-              </li>
-            </ul>
-          </li> -->
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a>Basic Form</a>
+            </li>
+          </ul>
+        </li> -->
     </ul>
   </nz-sider>
   <nz-layout>

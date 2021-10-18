@@ -11,6 +11,7 @@ import { CheckBoxComponent } from './controls/checkbox';
 import { RadioComponent } from './controls/radio';
 import { NgZorroAntdModule } from 'src/app/NgZorroAntdModule';
 import { FileComponent } from './controls/file';
+import { CustomButtonComponent } from './controls/CustomButton';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, NgZorroAntdModule],
@@ -21,7 +22,8 @@ import { FileComponent } from './controls/file';
     DropDownComponent,
     CheckBoxComponent,
     RadioComponent,
-    FileComponent
+    FileComponent,
+    CustomButtonComponent
   ],
   exports: [DynamicFormBuilderComponent],
   providers: [],

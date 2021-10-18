@@ -14,11 +14,16 @@ import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { AgmCoreModule } from '@agm/core'
+import { HeaderComponent } from './header/header.component';
+import { LayoutComponent } from './layout/layout.component';
+
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -28,10 +33,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,
-    NzMenuModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCELGTB6DsMo_r19F9C2NtdK8MLrJjXQ8Q'
-    })
+    NzMenuModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

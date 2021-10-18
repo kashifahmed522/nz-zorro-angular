@@ -10,14 +10,23 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'src/app/NgZorroAntdModule';
-import { AgmCoreModule } from '@agm/core'
+import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { SerachComponent } from './components/serach/serach.component';
-import { CommonComponent } from './components/common/common.component';  
+import { SearchComponent } from './components/search/search.component';
+import { SharedService } from './service/shared.service';
+import { CreateEditComponent } from './components/create-edit/create-edit.component';
+import { TableComponent } from './components/table/table.component';
 import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-builder.module';
-import { LayoutComponent } from './components/layout/layout.component';
-import { ContactComponent } from './components/contact/contact.component';
+import { CommonComponent } from './components/common/common.component';
+
+const components = [
+  WelcomeComponent,
+  SearchComponent,
+  CreateEditComponent,
+  TableComponent,
+];
+const services = [SharedService];
 
 @NgModule({
   imports: [
@@ -30,17 +39,11 @@ import { ContactComponent } from './components/contact/contact.component';
     NzMenuModule,
     NzInputModule,
     NgZorroAntdModule,
-    DynamicFormBuilderModule,
     HttpClientModule,
+    DynamicFormBuilderModule,
   ],
-  declarations: [
-    WelcomeComponent,
-    SerachComponent,
-    CommonComponent,
-    LayoutComponent,
-    ContactComponent,
-  ],
-  providers: [],
-  exports: [WelcomeComponent]
+  declarations: [...components, CommonComponent],
+  providers: [...services],
+  exports: [WelcomeComponent],
 })
-export class WelcomeModule { }
+export class WelcomeModule {}

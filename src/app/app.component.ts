@@ -8,5 +8,3 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isCollapsed = false;
 }
-
-// https://codepen.io/kccnma/pen/FdeBl

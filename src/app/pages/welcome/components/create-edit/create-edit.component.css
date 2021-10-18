@@ -1,0 +1,52 @@
+.create-edit-component {
+  background-color: #fff;
+  padding: 20px 0;
+}
+.heading,
+.create-edit-block {
+  padding: 0 20px;
+}
+
+.form-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+}
+
+nz-date-picker {
+  width: 100%;
+}
+
+nz-form-label {
+  padding-bottom: 0 !important;
+}
+
+.ant-form-item {
+  margin-bottom: 10px !important;
+}
+
+.last-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 20px;
+}
+
+.box-shadow {
+  box-shadow: 0px 11px 8px -10px #ccc, 0px -2px 6px 0px #ccc;
+}
+
+.btn-sec {
+  padding: 30px;
+  display: flex;
+  justify-content: end;
+}
+
+.block-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
+}
+
+.create-jobs .ant-form-item-label > label {
+  color: red !important;
+}

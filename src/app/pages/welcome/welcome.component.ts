@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SharedService } from './service/shared.service';
 
 @Component({
   selector: 'app-welcome',
@@ -7,114 +8,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./welcome.component.css'],
 })
 export class WelcomeComponent {
-  public form: FormGroup;
-  unsubcribe: any;
+  constructor(public _sharedService: SharedService, public _router: Router) {}
+  // <app-search> below required data
+  radioValuesInput = ['Billing', 'Routine'] || [];
+  radioValueIndex = 0;
+  // <app-search> above required data
+  outPutSearchData: any;
+  isFound = false;
 
-  public fields: any[] = [
-    {
-      type: 'text',
-      name: 'firstName',
-      label: 'First Name',
-      value: 'First Name',
-      required: true,
-    },
-    {
-      type: 'date',
-      name: 'birthDate',
-      label: 'Birth date',
-      value: '2020-02-15',
-      required: true,
-    },
-    {
-      type: 'text',
-      name: 'email',
-      label: 'Email',
-      value: '',
-      required: true,
-    },
+  ngOnInit() {}
 
-    {
-      type: 'file',
-      name: 'picture',
-      label: 'Picture',
-      required: false,
-      onUpload: this.onUpload.bind(this),
-    },
-    {
-      type: 'dropdown',
-      name: 'country',
-      label: 'Country',
-      value: 'in',
-      required: true,
-      options: [
-        { key: 'in', label: 'India' },
-        { key: 'us', label: 'USA' },
-      ],
-    },
-    {
-      type: 'radio',
-      name: 'gender',
-      label: 'Gender',
-      value: 'in',
-      required: true,
-      options: [
-        { key: 'm', label: 'Male' },
-        { key: 'f', label: 'Female' },
-      ],
-    },
-    {
-      type: 'checkbox',
-      name: 'hobby',
-      label: 'Hobby',
-      required: true,
-      options: [
-        { key: 'f', label: 'Fishing' },
-        { key: 'c', label: 'Cooking' },
-      ],
-    },
-  ];
-
-  constructor() {
-    this.form = new FormGroup({
-      fields: new FormControl(JSON.stringify(this.fields)),
-    });
-    this.unsubcribe = this.form.valueChanges.subscribe((update) => {
-      console.log(update);
-      this.fields = JSON.parse(update.fields);
-    });
-  }
-  ngOnInit() {
-    this.form = new FormGroup({});
-    this.fields.forEach((x) => {
-      if (x.type == 'checkbox') {
-        this.form.addControl(x.name, new FormGroup({}));
-        x.options.forEach((o: { key: string }) => {
-          (this.form.get(x.name) as FormGroup).addControl(
-            o.key,
-            new FormControl(false)
-          );
-        });
-      } else {
-        this.form.addControl(
-          x.name,
-          new FormControl(
-            x.value || '',
-            x.required ? Validators.required : null
-          )
-        );
-      }
-    });
+  getOutPutSearchValue(searchValue: any) {
+    console.log(`searchValue`, searchValue);
+    this.outPutSearchData = searchValue;
+    // this.getSchedular(this.validateForm.value); //when API is ready use this method
   }
 
-  onUpload(e: any) {
-    console.log(e);
-  }
-
-  getFields() {
-    return this.fields;
-  }
-
-  ngDistroy() {
-    this.unsubcribe();
-  }
+  // createJob() {
+  //   this._router.navigateByUrl(['/create-edit']);
+  // }
 }

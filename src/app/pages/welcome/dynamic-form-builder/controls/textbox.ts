@@ -16,7 +16,6 @@ import { FormControl } from '@angular/forms';
       [pattern]="field.regex"
     />
     <!-- <pre>{{ field.type | json }}</pre> -->
-
     <textarea
       rows="4"
       nz-input
@@ -31,15 +30,25 @@ import { FormControl } from '@angular/forms';
       style="width: 100%;"
       *ngIf="field.type === 'date'"
       [formControl]="form"
-      [nzFormat]="field.dateFormat"
       [id]="field.name"
+      [nzFormat]="field.dateFormat"
       [nzPlaceHolder]="field.placeholder"
     ></nz-date-picker>
+
+    <nz-time-picker
+      style="width: 100%;"
+      *ngIf="field.type === 'time'"
+      [formControl]="form"
+      [id]="field.name"
+      [nzDefaultOpenValue]="defaultOpenValue"
+    ></nz-time-picker>
   `,
 })
 export class TextBoxComponent {
   @Input() field: any = {};
   @Input() form!: FormControl;
+  time: Date | null = null;
+  defaultOpenValue = new Date(0, 0, 0, 0, 0, 0);
   get isValid() {
     return this.form.valid;
   }

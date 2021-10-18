@@ -1,0 +1,203 @@
+<!-- <pre>test {{dynamicFormFieldsJSON_1 | json}}</pre> -->
+<div class="create-jobs">
+  <app-common
+    [dynamicFormFields]="dynamicFormFieldsJSON"
+    (getLatestFormData)="LatestFormData($event)"
+    grid="grid"
+    title="Create/Edit - Routing Job"
+  >
+  </app-common>
+</div>
+
+<!-- <div class="create-edit-component box-shadow">
+  <h2 class="heading">Create/Edit Billing Jobs</h2>
+  <nz-divider style="margin: 10px 0"></nz-divider>
+  <div class="create-edit-block">
+    <form nz-form [formGroup]="createEditForm">
+      <div class="form-block">
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired> Job Name </nz-form-label>
+            <nz-form-control nzSpan="" nzErrorTip="Please Enter job name">
+              <input
+                nz-input
+                placeholder="Job Name"
+                formControlName="jobName"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired> Job Code </nz-form-label>
+            <nz-form-control nzSpan="" nzErrorTip="Please enter job code">
+              <input
+                nz-input
+                placeholder="Job Code"
+                formControlName="jobCode"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired>
+              Select Calender
+            </nz-form-label>
+            <nz-form-control nzSpan="" nzErrorTip="Please select calender">
+              <nz-select
+                nzShowSearch
+                nzAllowClear
+                placeholder="Select Calender"
+                formControlName="calender"
+              >
+                <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired> Frequency </nz-form-label>
+            <nz-form-control nzSpan="" nzErrorTip="Please Enter frequency">
+              <nz-select
+                nzShowSearch
+                nzAllowClear
+                placeholder="Select frequency"
+                formControlName="frequency"
+              >
+                <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired> Billing From </nz-form-label>
+            <nz-form-control nzSpan="" nzErrorTip="Please Enter job name">
+              <nz-date-picker
+                (ngModelChange)="onChangeCalender($event)"
+                placeholder="Billing From"
+                formControlName="billingFrom"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired> Billing To </nz-form-label>
+            <nz-form-control nzSpan="" nzErrorTip="Please enter job code">
+              <nz-date-picker
+                (ngModelChange)="onChangeCalender($event)"
+                placeholder="Billing To"
+                formControlName="billingTo"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired>
+              Execute/Start Time (UTC)
+            </nz-form-label>
+            <nz-form-control
+              nzSpan=""
+              nzErrorTip="Please select Execute/Start Time"
+            >
+              <nz-date-picker
+                nzFormat="yyyy-MM-dd HH:mm:ss"
+                [nzDisabledDate]=""
+                [nzDisabledTime]=""
+                [nzShowTime]="{ nzDefaultOpenValue: timeDefaultValue }"
+                formControlName="executeStart"                
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24"> Status </nz-form-label>
+            <nz-form-control nzSpan="">
+              <nz-select
+                nzShowSearch
+                nzAllowClear
+                placeholder="Select status"
+                formControlName="status"
+              >
+                <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24"> Depends On </nz-form-label>
+            <nz-form-control nzSpan="">
+              <nz-select
+                nzShowSearch
+                nzAllowClear
+                placeholder="Select Depends On"
+                formControlName="dependsOn"
+              >
+                <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="last-row">
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired>
+              Request Method
+            </nz-form-label>
+            <nz-form-control
+              nzSpan=""
+              nzErrorTip="Please select Request Method"
+            >
+              <nz-select
+                nzShowSearch
+                nzAllowClear
+                placeholder="Select Request Method"
+                formControlName="requestMethod"
+              >
+                <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-label nzSpan="24" nzRequired> Rest URL </nz-form-label>
+            <nz-form-control nzSpan="" nzErrorTip="Please enter Rest URL">
+              <input
+                nz-input
+                placeholder="Rest URL"
+                formControlName="restURL"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="btn-sec">
+  <div class="block-btn">
+    <button nz-button nzType="primary" [disabled]="!createEditForm.valid">Cancel</button>
+    <button nz-button nzType="primary" (click)="submitCreateEditFormBuilder()">
+      Save
+    </button>
+  </div>
+</div> -->
