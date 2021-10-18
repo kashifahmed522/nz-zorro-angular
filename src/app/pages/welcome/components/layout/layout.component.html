@@ -1,0 +1,6 @@
+<ng-container *ngIf="dynamicFormFieldsJSON.length">
+  <!-- {{dynamicFormFieldsJSON.length | json}} -->
+  <!-- <app-serach [dynamicFormFields]='dynamicFormFieldsJSON' (getLatestFormData)='LatestFormData($event)'></app-serach> -->
+  <app-serach [dynamicFormFields]='dynamicFormFieldsJSONContact' (getLatestFormData)='LatestFormData($event)'>
+  </app-serach>
+</ng-container>

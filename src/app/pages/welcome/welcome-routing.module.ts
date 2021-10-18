@@ -6,10 +6,11 @@ import { IconsProviderModule } from 'src/app/icons-provider.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WelcomeComponent } from './welcome.component';
 import { SerachComponent } from './components/serach/serach.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 const routes: Routes = [
-  // { path: '', component: WelcomeComponent },
-  { path: '', component: SerachComponent },
+  { path: '', component: LayoutComponent },
+  // { path: '', component: SerachComponent },
 ];
 
 @NgModule({
@@ -19,8 +20,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     IconsProviderModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class WelcomeRoutingModule { }
+export class WelcomeRoutingModule {}

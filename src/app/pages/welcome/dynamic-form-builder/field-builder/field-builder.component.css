@@ -1,0 +1,17 @@
+.form {
+  position: relative !important;
+}
+.danger-text {
+  position: absolute;
+  bottom: -22px;
+  color: red;
+}
+
+.text-danger {
+  color: red;
+  margin-left: 4px;
+}
+
+nz-form-label {
+  padding: 0 !important;
+}

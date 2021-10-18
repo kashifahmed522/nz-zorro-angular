@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SerachComponent } from './components/serach/serach.component';
 import { CommonComponent } from './components/common/common.component';  
+import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-builder.module';
+import { LayoutComponent } from './components/layout/layout.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   imports: [
@@ -27,15 +30,15 @@ import { CommonComponent } from './components/common/common.component';
     NzMenuModule,
     NzInputModule,
     NgZorroAntdModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
-    }),
+    DynamicFormBuilderModule,
     HttpClientModule,
   ],
   declarations: [
     WelcomeComponent,
     SerachComponent,
     CommonComponent,
+    LayoutComponent,
+    ContactComponent,
   ],
   providers: [],
   exports: [WelcomeComponent]

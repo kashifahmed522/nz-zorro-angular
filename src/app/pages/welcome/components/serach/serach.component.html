@@ -1,16 +1,11 @@
-<!-- <div class="search-component">
-  <div class="heading">Search jobs</div>
-  <nz-divider style="margin: 10px 0;"></nz-divider>
-  <div class="search-block">
-    <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
-      <nz-form-item>
-        <nz-form-label nzSpan="24">Field A</nz-form-label>
-        <nz-form-control nzSpan="" nzErrorTip="Please input your username!">
-          <input nz-input formControlName="fieldA" placeholder="input placeholder" />
-        </nz-form-control>
-      </nz-form-item>
-    </form>
+<div class="search-component">
+  <div class="card">
+    <div class="card-header">Dynamic Forms</div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <dynamic-form-builder [formGroup]="form" [fields]="getFields()"></dynamic-form-builder>
+      </form>
+    </div>
   </div>
-</div> -->
-
-<app-common></app-common>
+</div>
+{{form?.value|json}}
