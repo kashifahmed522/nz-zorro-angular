@@ -21,6 +21,8 @@ import {
 export class SerachComponent implements OnInit {
   @Input()
   dynamicFormFields: any;
+  @Input()
+  grid: any;
 
   @Output() getLatestFormData = new EventEmitter();
 

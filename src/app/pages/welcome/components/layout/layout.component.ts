@@ -10,6 +10,8 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  grid: number = 2;
+
   public dynamicFormFieldsJSON = [
     {
       type: 'text',
@@ -109,7 +111,7 @@ export class LayoutComponent implements OnInit {
       label: 'Country',
       value: 'in',
       required: true,
-      multiSelect: false,
+      multiSelect: true,
       options: [
         { key: 'in', label: 'India' },
         { key: 'us', label: 'USA' },

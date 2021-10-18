@@ -3,7 +3,7 @@
     <div class="card-header">Dynamic Forms</div>
     <div class="card-body">
       <form [formGroup]="form">
-        <dynamic-form-builder [formGroup]="form" [fields]="getFields()"></dynamic-form-builder>
+        <dynamic-form-builder [formGroup]="form" [fields]="getFields()" [grid]='grid'></dynamic-form-builder>
       </form>
     </div>
   </div>

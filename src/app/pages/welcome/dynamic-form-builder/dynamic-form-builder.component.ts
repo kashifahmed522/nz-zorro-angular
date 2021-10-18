@@ -19,6 +19,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
       .grid-3 {
         grid-template-columns: 1fr 1fr 1fr;
       }
+      .grid-4 {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
     `,
   ],
 })
@@ -26,6 +29,7 @@ export class DynamicFormBuilderComponent implements OnInit {
   @Output() onSubmit = new EventEmitter();
   @Input() fields: any[] = [];
   @Input() formGroup!: FormGroup;
+  @Input() grid!: number;
   constructor() {}
 
   ngOnInit() {

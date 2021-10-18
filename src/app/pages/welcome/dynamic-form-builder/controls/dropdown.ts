@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
   selector: 'dropdown',
   template: `
     <ng-container *ngIf="field.multiSelect; else elseTemplate">
-      <nz-select
+      <!-- <nz-select
         nzMode="tags"
         multiple
         nzShowSearch
@@ -21,7 +21,21 @@ import { FormControl } from '@angular/forms';
         >
           {{ opt.label }}
         </nz-option>
-      </nz-select>
+      </nz-select> -->
+      <select
+        multiple
+        [id]="field.name"
+        [formControl]="form"
+        style="width: 100%;"
+      >
+        <option
+          *ngFor="let opt of field.options"
+          [label]="opt.label"
+          [value]="opt.key"
+        >
+          {{ opt.label }}
+        </option>
+      </select>
     </ng-container>
 
     <ng-template #elseTemplate>
