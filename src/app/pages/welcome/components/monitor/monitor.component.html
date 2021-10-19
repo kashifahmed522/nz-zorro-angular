@@ -1,0 +1,100 @@
+<div class="monitoring-component">
+  <!-- <h2 class="card-header"></h2>
+  <nz-divider nzPlain></nz-divider> -->
+  <div class="copy-template">
+    <app-common
+      [dynamicFormFields]="dynamicFormFieldsJSON"
+      (getLatestFormData)="LatestFormData($event)"
+      [grid]="grid"
+      title="Monitoring Screen"
+    >
+    </app-common>
+  </div>
+
+  <div class="monitoring-table">
+    <nz-table
+      #rowSelectionTable
+      nzShowSizeChanger
+      [nzFrontPagination]="listOfData.length > 10"
+      [nzData]="listOfData"
+      (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+      [nzBordered]="true"
+      [nzScroll]="{ x: '1500px', y: 'auto' }"
+    >
+      <thead>
+        <tr class="title-th">
+          <th
+            [(nzChecked)]="checked"
+            [nzIndeterminate]="indeterminate"
+            (nzCheckedChange)="onAllChecked($event)"
+            nzLeft
+          ></th>
+          <!-- [nzSelections]="listOfSelection" -->
+          <th style="background-color: #fff" nzLeft>
+            {{ "Jon Name" | uppercase }}
+          </th>
+          <th style="background-color: #fff">{{ "Jon Type" | uppercase }}</th>
+          <th style="background-color: #fff">
+            <div>{{ "Job Period" | uppercase }}</div>
+            <div class="period-column">
+              <div class="">{{ "From Date" | uppercase }}</div>
+              <div class="">{{ "To Date" | uppercase }}</div>
+            </div>
+          </th>
+          <th style="background-color: #fff">
+            {{ "Last Execute status" | uppercase }}
+          </th>
+          <th style="background-color: #fff">
+            {{ "CASS Operation" | uppercase }}
+          </th>
+          <th style="background-color: #fff">
+            {{ "Calendar Name" | uppercase }}
+          </th>
+          <th style="background-color: #fff">{{ "Dependency" | uppercase }}</th>
+          <th style="background-color: #fff">{{ "Frequency" | uppercase }}</th>
+          <th style="background-color: #fff">
+            {{ "Planned Execution Time" | uppercase }}
+          </th>
+          <th style="background-color: #fff">
+            {{ "Last Execution Status" | uppercase }}
+          </th>
+          <th style="background-color: #fff" nzRight>
+            {{ "Re-Run" | uppercase }}
+          </th>
+          <th style="background-color: #fff" nzRight>
+            {{ "History" | uppercase }}
+          </th>
+        </tr>
+      </thead>
+      <tbody class="table-body">
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td
+            [nzChecked]="setOfCheckedId.has(data.id)"
+            (nzCheckedChange)="onItemChecked(data.id, $event)"
+            nzLeft
+          ></td>
+          <td nzLeft>{{ data.jobCode }}</td>
+          <td nzBreakWord>{{ data.jobName }}</td>
+          <td nzBreakWord>{{ data.frequency }}</td>
+          <td nzBreakWord>{{ data.lastExecuteTime }}</td>
+          <td nzBreakWord>{{ data.lastExecuteTime }}</td>
+          <td nzBreakWord>{{ data.lastExecuteTime }}</td>
+          <td nzBreakWord>{{ data.lastExecuteTime }}</td>
+          <td nzBreakWord>{{ data.lastExecuteTime }}</td>
+          <td nzBreakWord>{{ data.lastExecuteTime }}</td>
+          <td nzBreakWord>{{ data.lastExecuteTime }}</td>
+          <td nzRight class="buttons-sec">
+            <button nz-button nzType="primary" class="monitor-button">
+              Re-run
+            </button>
+          </td>
+          <td nzRight>
+            <button nz-button nzType="primary" class="monitor-button">
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

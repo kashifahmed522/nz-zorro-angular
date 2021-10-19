@@ -19,12 +19,25 @@ import { CreateEditComponent } from './components/create-edit/create-edit.compon
 import { TableComponent } from './components/table/table.component';
 import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-builder.module';
 import { CommonComponent } from './components/common/common.component';
+import { CopyTemplateComponent } from './components/copytemplate/copytemplate.component';
+import { CopyTemplateTableComponent } from './components/copytemplatetable/copytemplatetable.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { TemplatewrapperComponent } from './components/templatewrapper/templatewrapper.component';
+import { MonitorComponent } from './components/monitor/monitor.component';
+import { MonitoringComponent } from './components/monitoring/monitoring.component';
 
 const components = [
   WelcomeComponent,
+  CommonComponent,
   SearchComponent,
   CreateEditComponent,
   TableComponent,
+  CopyTemplateTableComponent,
+  CopyTemplateComponent,
+  TemplatewrapperComponent,
+  MonitorComponent,
+  MonitoringComponent,
+  PagenotfoundComponent,
 ];
 const services = [SharedService];
 
@@ -42,7 +55,7 @@ const services = [SharedService];
     HttpClientModule,
     DynamicFormBuilderModule,
   ],
-  declarations: [...components, CommonComponent],
+  declarations: [...components],
   providers: [...services],
   exports: [WelcomeComponent],
 })

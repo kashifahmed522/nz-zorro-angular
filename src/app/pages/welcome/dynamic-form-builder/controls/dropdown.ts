@@ -56,6 +56,35 @@ import { FormControl } from '@angular/forms';
       </nz-select>
     </ng-template>
   `,
+  styles: [
+    `
+      select#operationType {
+        border-color: #d9d9d9;
+      }
+
+      /* width */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #072f53;
+        border-radius: 10px;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #072f53;
+      }
+    `,
+  ],
 })
 export class DropDownComponent {
   @Input() field: any = {};

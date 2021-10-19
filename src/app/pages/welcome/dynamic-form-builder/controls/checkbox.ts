@@ -4,7 +4,11 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'checkbox',
   template: `
-    <div [formGroup]="form">
+    <div
+      [formGroup]="form"
+      class="wrap-content"
+      [style.flexDirection]="field.flexDirection ? field.flexDirection : ''"
+    >
       <nz-checkbox-wrapper *ngFor="let opt of field.options">
         <div nz-row>
           <div nz-col nzSpan="">
@@ -16,6 +20,14 @@ import { FormGroup } from '@angular/forms';
       </nz-checkbox-wrapper>
     </div>
   `,
+  styles: [
+    `
+      .wrap-content {
+        display: flex;
+        gap: 10px;
+      }
+    `,
+  ],
 })
 export class CheckBoxComponent {
   @Input() field: any = {};

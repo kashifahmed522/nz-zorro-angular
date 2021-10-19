@@ -1,0 +1,45 @@
+<div class="copy-template-table-componenet">
+  <h2 class="title">{{ title }}</h2>
+  <nz-divider nzPlain></nz-divider>
+  <div class="copy-template-table">
+    <nz-table
+      #rowSelectionTable
+      nzShowSizeChanger
+      [nzFrontPagination]="listOfData.length > 10"
+      [nzData]="listOfData"
+    >
+      <!-- (nzCurrentPageDataChange)="onCurrentPageDataChange($event)" -->
+      <!-- [nzBordered]="true" -->
+      <thead>
+        <tr class="title-th">
+          <!-- <th
+            [nzSelections]="listOfSelection"
+            [(nzChecked)]="checked"
+            [nzIndeterminate]="indeterminate"
+            (nzCheckedChange)="onAllChecked($event)"
+          ></th> -->
+          <th style="background-color: #fff"></th>
+          <th style="background-color: #fff">{{ "Jon Code" | uppercase }}</th>
+          <th style="background-color: #fff">{{ "Jon Name" | uppercase }}</th>
+          <th style="background-color: #fff">{{ "Frequency" | uppercase }}</th>
+          <th style="background-color: #fff">
+            {{ "Last Execute status" | uppercase }}
+          </th>
+        </tr>
+      </thead>
+      <tbody class="table-body">
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td
+            [nzChecked]="setOfCheckedId.has(data.id)"
+            (nzCheckedChange)="onItemChecked(data.id, $event)"
+          ></td>
+          <td>{{ data.jobCode }}</td>
+          <td>{{ data.jobName }}</td>
+          <td>{{ data.frequency }}</td>
+          <td>{{ data.lastExecuteTime }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

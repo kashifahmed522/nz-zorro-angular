@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
       .grid {
         display: grid;
         grid-column-gap: 20px;
+        align-items: center;
       }
       .grid-1 {
         grid-template-columns: 1fr;

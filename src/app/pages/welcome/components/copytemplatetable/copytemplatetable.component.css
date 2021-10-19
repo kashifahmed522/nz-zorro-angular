@@ -1,0 +1,32 @@
+td.button-sections > button {
+  margin-right: 15px;
+}
+
+.ant-table-tbody > tr > td {
+  padding: 6px 16px;
+}
+
+tbody.table-body > tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.ant-table-thead > tr > th {
+  padding: 10px 16px !important;
+}
+
+.copy-template-table-componenet {
+  background-color: #fff;
+  padding: 20px 0;
+}
+
+.title {
+  padding: 0 20px;
+}
+
+.ant-divider-horizontal {
+  margin: 8px 0 0 0 !important;
+}
+
+th::before {
+  display: none !important;
+}

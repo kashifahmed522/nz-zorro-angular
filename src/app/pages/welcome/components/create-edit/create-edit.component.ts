@@ -164,7 +164,7 @@ export class CreateEditComponent {
         { key: 'post', label: 'POST' },
         { key: 'put', label: 'PUT' },
         { key: 'get', label: 'GET' },
-        { key: 'patch', label: 'PATCh' },
+        { key: 'patch', label: 'PATCH' },
       ],
     },
     {
