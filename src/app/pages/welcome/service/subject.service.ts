@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { LoaderStatusModel } from '../model/loader-status.model';
 
 @Injectable()
 export class SubjectService {
@@ -18,12 +19,7 @@ export class SubjectService {
     return this.LoaderStatus$.asObservable();
   }
 
-  setLoaderStatus(status: {
-    isActive: boolean;
-    type?: string;
-    message?: string;
-    desc?: string;
-  }) {
+  setLoaderStatus(status: LoaderStatusModel) {
     this.LoaderStatus$.next(status);
   }
 }

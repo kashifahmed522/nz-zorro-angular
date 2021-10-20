@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { FormFieldsModel } from '../../model/form-fields.model';
 @Component({
   selector: 'app-common',
   templateUrl: './common.component.html',
@@ -29,8 +30,6 @@ export class CommonComponent implements OnInit {
   public form: FormGroup;
   unsubcribe: any;
 
-  // public dynamicFormFields = this.dynamicFormFields;
-
   LatestFormData(data: any) {
     console.log('data :>> ', data);
   }
@@ -48,33 +47,31 @@ export class CommonComponent implements OnInit {
   }
   ngOnInit() {
     this.form = new FormGroup({});
-    this.dynamicFormFields?.forEach(
-      (x: {
-        type: string;
-        name: string;
-        options: { key: string }[];
-        value: any;
-        required: any;
-      }) => {
-        if (x.type == 'checkbox') {
-          this.form.addControl(x.name, new FormGroup({}));
-          x.options.forEach((o: { key: string }) => {
-            (this.form.get(x.name) as FormGroup).addControl(
-              o.key,
-              new FormControl(false)
-            );
-          });
-        } else {
-          this.form.addControl(
-            x.name,
-            new FormControl(
-              x.value || '',
-              x.required ? Validators.required : null
-            )
+    this.dynamicFormFields?.forEach((x: FormFieldsModel) => {
+      if (x.type == 'checkbox') {
+        this.form.addControl(x.name, new FormGroup({}));
+        x.options.forEach((o: { key: string }) => {
+          (this.form.get(x.name) as FormGroup).addControl(
+            o.key,
+            new FormControl(false)
           );
-        }
+        });
+      } else {
+        this.form.addControl(
+          x.name,
+          new FormControl(
+            x.value || '',
+            x.required ? Validators.required : null,
+            x.disabled ? x.disabled : null
+          )
+        );
+
+        // this.form.addControl(
+        //   x.name,
+        //   new FormControl({ value: x.value || '', disabled: x.disabled }, Validators.required ?)
+        // );
       }
-    );
+    });
     this.formChanges();
     // this.statusCheck();
     // this.getLatestFormData.emit('invalid');

@@ -277,10 +277,6 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       });
   }
 
-  onUpload(e: any) {
-    console.log(e);
-  }
-
   LatestFormData(data: any) {
     console.log('data :>> ', data);
   }

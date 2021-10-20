@@ -28,6 +28,8 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
 import { SubjectService } from './service/subject.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpInterceptorService } from './service/interceptorservice.interceptor';
+import { HistoryComponent } from './components/history/history.component';
+import { HistoryDetailsComponent } from './components/history-details/history-details.component';
 
 const components = [
   WelcomeComponent,
@@ -41,6 +43,8 @@ const components = [
   MonitorComponent,
   MonitoringComponent,
   LoaderComponent,
+  HistoryComponent,
+  HistoryDetailsComponent,
   PagenotfoundComponent,
 ];
 const services = [SharedService, SubjectService];

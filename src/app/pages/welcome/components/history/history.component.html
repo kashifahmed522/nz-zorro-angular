@@ -1,0 +1,30 @@
+<div class="billing-jobs-history">
+  <ng-container *ngIf="this.templatesData?.selectTemplate === 'billing'; else elseTemplate">
+    <app-common [dynamicFormFields]="billingJSON" (getLatestFormData)="LatestFormData($event)" [grid]="grid"
+      title="Billing Jobs History">
+    </app-common>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <app-common [dynamicFormFields]="routineJSON" (getLatestFormData)="LatestFormData($event)" [grid]="grid"
+      title="Routine Jobs History">
+    </app-common>
+  </ng-template>
+
+  <div class="history-details">
+    <app-history-details title="Billing Jobs History" [historyDetails]='historyDetails'
+      [historyDetailsHeaders]="historyDetailsHeaders"></app-history-details>
+  </div>
+
+  <div class="history-details">
+    <app-history-details title="Depended By" [historyDetails]='dependedByDetails'
+      [historyDetailsHeaders]="historyDetailsHeaders"></app-history-details>
+  </div>
+
+  <div class="history-details">
+    <app-history-details title="Job History" [historyDetails]='jobHistory' [historyDetailsHeaders]="jobHistoryHeaders">
+    </app-history-details>
+  </div>
+  <div class="back-btn">
+    <button nz-button nzType="primary">Back</button>
+  </div>
+</div>

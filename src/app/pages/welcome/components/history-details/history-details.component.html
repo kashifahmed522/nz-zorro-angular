@@ -1,0 +1,45 @@
+<div class="common-history-component">
+  <div class="wrap-content">
+    <div class="title">
+      <h2 class="title-h2">{{title}}</h2>
+    </div>
+    <div class="common-table">
+      <nz-table #rowSelectionTable nzShowSizeChanger [nzData]="historyDetails" [nzShowPagination]="false">
+        <thead>
+          <tr class="title-th">
+            <th style="background-color: #fff" *ngIf="historyDetailsHeaders['jobName']">{{
+              historyDetailsHeaders['jobName']
+              |
+              uppercase }}</th>
+            <th style="background-color: #fff" *ngIf="historyDetailsHeaders['frequency']">{{
+              historyDetailsHeaders['frequency'] | uppercase }}</th>
+            <th style="background-color: #fff" *ngIf="historyDetailsHeaders['executeStartTimeUTC']">{{
+              historyDetailsHeaders['executeStartTimeUTC'] | uppercase }}</th>
+            <th style="background-color: #fff" *ngIf="historyDetailsHeaders['lastExecuteTime']">{{
+              historyDetailsHeaders['lastExecuteTime'] | uppercase }}</th>
+            <th style="background-color: #fff" *ngIf="historyDetailsHeaders['actualStartTimeUTC']">{{
+              historyDetailsHeaders['actualStartTimeUTC'] | uppercase }}</th>
+            <th style="background-color: #fff" *ngIf="historyDetailsHeaders['actualEndTimeUTC']">{{
+              historyDetailsHeaders['actualEndTimeUTC'] | uppercase }}</th>
+            <th style="background-color: #fff" *ngIf="historyDetailsHeaders['executeStatus']">{{
+              historyDetailsHeaders['executeStatus'] | uppercase }}</th>
+            <th style="background-color: #fff" *ngIf="historyDetailsHeaders['resultMessage']">{{
+              historyDetailsHeaders['resultMessage'] | uppercase }}</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          <tr *ngFor="let data of rowSelectionTable?.data">
+            <td *ngIf="data['jobName']">{{ data['jobName'] }}</td>
+            <td *ngIf="data['frequency']">{{ data['frequency'] }}</td>
+            <td *ngIf="data['executeStartTimeUTC']">{{ data['executeStartTimeUTC'] }}</td>
+            <td *ngIf="data['lastExecuteTime']">{{ data['lastExecuteTime'] }}</td>
+            <td *ngIf="data['actualStartTimeUTC']">{{ data['actualStartTimeUTC'] }}</td>
+            <td *ngIf="data['actualEndTimeUTC']">{{ data['actualEndTimeUTC'] }}</td>
+            <td *ngIf="data['executeStatus']">{{ data['executeStatus'] }}</td>
+            <td *ngIf="data['resultMessage']">{{ data['resultMessage'] }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>

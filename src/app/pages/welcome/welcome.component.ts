@@ -30,7 +30,6 @@ export class WelcomeComponent {
       .getLoaderStatus()
       .subscribe((serviceStatusData$) => {
         this.serviceStatusData = serviceStatusData$;
-        console.log(`serviceStatusData`, this.serviceStatusData);
       });
   }
 
