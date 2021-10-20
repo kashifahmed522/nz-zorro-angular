@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { SharedService } from './service/shared.service';
+import { SubjectService } from './service/subject.service';
 
 @Component({
   selector: 'app-welcome',
@@ -8,7 +10,11 @@ import { SharedService } from './service/shared.service';
   styleUrls: ['./welcome.component.css'],
 })
 export class WelcomeComponent {
-  constructor(public _sharedService: SharedService, public _router: Router) {}
+  constructor(
+    public _sharedService: SharedService,
+    public _router: Router,
+    public _subjectService$: SubjectService
+  ) {}
   // <app-search> below required data
   radioValuesInput = ['Billing', 'Routine'] || [];
   radioValueIndex = 0;
@@ -16,7 +22,17 @@ export class WelcomeComponent {
   outPutSearchData: any;
   isFound = false;
 
-  ngOnInit() {}
+  public serviceStatusData$!: Subscription;
+  public serviceStatusData: any;
+
+  ngOnInit(): void {
+    this.serviceStatusData$ = this._subjectService$
+      .getLoaderStatus()
+      .subscribe((serviceStatusData$) => {
+        this.serviceStatusData = serviceStatusData$;
+        console.log(`serviceStatusData`, this.serviceStatusData);
+      });
+  }
 
   getOutPutSearchValue(searchValue: any) {
     console.log(`searchValue`, searchValue);

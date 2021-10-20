@@ -11,7 +11,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'src/app/NgZorroAntdModule';
 import { AgmCoreModule } from '@agm/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './components/search/search.component';
 import { SharedService } from './service/shared.service';
@@ -25,6 +25,9 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { TemplatewrapperComponent } from './components/templatewrapper/templatewrapper.component';
 import { MonitorComponent } from './components/monitor/monitor.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
+import { SubjectService } from './service/subject.service';
+import { LoaderComponent } from './components/loader/loader.component';
+import { HttpInterceptorService } from './service/interceptorservice.interceptor';
 
 const components = [
   WelcomeComponent,
@@ -37,9 +40,10 @@ const components = [
   TemplatewrapperComponent,
   MonitorComponent,
   MonitoringComponent,
+  LoaderComponent,
   PagenotfoundComponent,
 ];
-const services = [SharedService];
+const services = [SharedService, SubjectService];
 
 @NgModule({
   imports: [
@@ -55,8 +59,15 @@ const services = [SharedService];
     HttpClientModule,
     DynamicFormBuilderModule,
   ],
+  providers: [
+    ...services,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+  ],
   declarations: [...components],
-  providers: [...services],
   exports: [WelcomeComponent],
 })
 export class WelcomeModule {}

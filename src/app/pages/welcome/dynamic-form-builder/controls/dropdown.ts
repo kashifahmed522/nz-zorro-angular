@@ -42,7 +42,7 @@ import { FormControl } from '@angular/forms';
       <nz-select
         nzShowSearch
         nzAllowClear
-        nzPlaceHolder="Select a person"
+        [nzPlaceHolder]="field.placeholder"
         [id]="field.name"
         [formControl]="form"
       >

@@ -2,7 +2,7 @@
   <nz-form-item>
     <!-- <nz-form-label [nzSpan]="24" [nzFor]="field?.label" [nzRequired]="field?.required" [attr.for]="field?.label"> -->
     <!-- <strong class="text-danger" *ngIf="field?.required && form.get(field.name).invalid">*</strong> -->
-    <nz-form-label [nzSpan]="24" *ngIf="field?.type==='checkbox' ? false : true" [nzFor]="field?.label" [attr.for]="field?.label">
+    <nz-form-label [nzSpan]="24" *ngIf="(field?.type==='checkbox' && field?.label==='') ? false : true" [nzFor]="field?.label" [attr.for]="field?.label">
       {{ field?.label }}
       <strong class="text-danger" *ngIf="field?.required">*</strong>
     </nz-form-label>

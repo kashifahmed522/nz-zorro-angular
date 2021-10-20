@@ -36,7 +36,6 @@ export class CommonComponent implements OnInit {
   }
 
   constructor() {
-    console.log('dynamicFormFields :>> ', this.dynamicFormFields);
     this.form = new FormGroup({
       dynamicFormFields: new FormControl(
         JSON.stringify(this.dynamicFormFields)
@@ -77,16 +76,36 @@ export class CommonComponent implements OnInit {
       }
     );
     this.formChanges();
+    // this.statusCheck();
+    // this.getLatestFormData.emit('invalid');
+  }
+
+  statusCheck() {
+    this.form.statusChanges.subscribe((status) => {
+      console.log('status: ' + status);
+    });
   }
 
   formChanges() {
-    this.form.valueChanges.subscribe((result: any) =>
-      this.getLatestFormData.emit(result)
-    );
+    this.form.valueChanges.subscribe((result: any) => {
+      if (this.form.valid) {
+        this.getLatestFormData.emit(result);
+      } else {
+      }
+    });
   }
 
-  onUpload(e: any) {
-    console.log(e);
+  submitFormBuilder() {
+    for (const i in this.form.controls) {
+      if (this.form.controls.hasOwnProperty(i)) {
+        this.form.controls[i].markAsDirty();
+        this.form.controls[i].updateValueAndValidity();
+      }
+    }
+    if (this.form.valid) {
+      console.log(this.form.value);
+    }
+    console.log(this.form.value);
   }
 
   getFields() {

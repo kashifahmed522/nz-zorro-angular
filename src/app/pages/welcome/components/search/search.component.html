@@ -9,25 +9,24 @@
 </div>
 
 <div class="new-country-request pr-20 pl-20 box-shadow">
-  <ng-container *ngIf="isFound; else elseTemplate">
-    <div class="">
-      <h2 class="heading">New CASS Country Request</h2>
-    </div>
-    <p class="">
-      <!-- <b>{{ outPutSearchData?.country }}</b> -->
-       is a New CASS Country Operation.
-      Whose schedule hasn't been created.
-    </p>
-    <div class="">
-      <button nz-button nzType="primary" routerLink="/search/jobs">
-        Create job
-      </button>
-    </div>
-  </ng-container>
+  <!-- <ng-container *ngIf="isFound; else elseTemplate"> -->
+  <div class="">
+    <h2 class="heading">New CASS Country Request</h2>
+  </div>
+  <p class="">
+    <!-- <b>{{ outPutSearchData?.country }}</b> -->
+    is a New CASS Country Operation. Whose schedule hasn't been created.
+  </p>
+  <div class="">
+    <button nz-button nzType="primary" routerLink="/search/jobs">
+      Create job
+    </button>
+  </div>
+  <!-- </ng-container>
   <ng-template #elseTemplate>
     <div class="search-template">Billing Job Templates</div>
     <app-table></app-table>
-  </ng-template>
+  </ng-template> -->
 </div>
 
 <!-- <div class="search-component">

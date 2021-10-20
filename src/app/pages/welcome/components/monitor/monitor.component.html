@@ -15,15 +15,17 @@
     <nz-table
       #rowSelectionTable
       nzShowSizeChanger
-      [nzFrontPagination]="listOfData.length > 10"
       [nzData]="listOfData"
       (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
       [nzBordered]="true"
       [nzScroll]="{ x: '1500px', y: 'auto' }"
+      [nzFooter]="tplFooter"
     >
+      <!-- [nzFrontPagination]="listOfData.length > 10" -->
       <thead>
         <tr class="title-th">
           <th
+            style="width: 15%"
             [(nzChecked)]="checked"
             [nzIndeterminate]="indeterminate"
             (nzCheckedChange)="onAllChecked($event)"
@@ -69,6 +71,7 @@
       <tbody class="table-body">
         <tr *ngFor="let data of rowSelectionTable.data">
           <td
+            style="width: 15%"
             [nzChecked]="setOfCheckedId.has(data.id)"
             (nzCheckedChange)="onItemChecked(data.id, $event)"
             nzLeft
@@ -96,5 +99,13 @@
         </tr>
       </tbody>
     </nz-table>
+
+    <ng-template #tplFooter style="border: 0">
+      <div class="view-all">
+        <button nz-button nzType="primary" class="monitor-button">
+          View All
+        </button>
+      </div>
+    </ng-template>
   </div>
 </div>

@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SharedService } from '../../service/shared.service';
+import { SubjectService } from '../../service/subject.service';
 
 @Component({
   selector: 'app-search',
@@ -24,15 +25,21 @@ export class SearchComponent {
 
   public grid: number = 3;
 
+  constructor(
+    public _subjectService$: SubjectService,
+    public _sharedService: SharedService
+  ) {}
+
   public dynamicFormFieldsJSON: any = [
     {
       type: 'dropdown',
       name: 'operationType',
       label: 'Operation Type',
-      value: 'us',
+      value: '',
       required: true,
       className: 'country-className',
       multiSelect: false,
+      placeholder: 'Select Operation Type',
       options: [
         { key: 'in', label: 'India' },
         { key: 'us', label: 'USA' },
@@ -68,13 +75,33 @@ export class SearchComponent {
     },
   ];
   // public dynamicFormFields = this.dynamicFormFields;
-
+  formData: any;
   LatestFormData(data: any) {
-    console.log('data :>> ', data);
+    this.formData = data;
   }
 
   onSearch(e: any) {
-    console.log(e);
+    console.log(this.formData);
     this.isFound = false;
+    this._subjectService$.setLoaderStatus({
+      isActive: true,
+      type: '',
+      message: '',
+      desc: '',
+    });
+
+    this._sharedService.postSchedular('123').subscribe(
+      (itme) => {
+        console.log('data ');
+      },
+      () => {
+        setTimeout(() => {
+          this._subjectService$.setLoaderStatus({
+            isActive: false,
+          });
+        }, 3000);
+      }
+    );
+    this._subjectService$.setCopyTemplateData(this.formData);
   }
 }

@@ -29,9 +29,9 @@ export class SharedService {
   // }
 
   /** POST: add a new hero to the database */
-  postSchedular(payload: SearchModel): Observable<SearchModel> {
+  postSchedular(payload: any): Observable<SearchModel> {
     return this.http
-      .post<SearchModel>(this.schedularUrl, payload, httpOptions)
+      .post<any>(this.schedularUrl, payload, httpOptions)
       .pipe(catchError(this.handleError));
   }
 

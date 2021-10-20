@@ -50,3 +50,21 @@ h2.card-header {
   background-color: #fff;
   padding: 10px;
 }
+
+tbody.table-body > tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+/* .ant-table.ant-table-bordered > .ant-table-footer { */
+.ant-table.ant-table-bordered > .ant-table-footer {
+  border: 0 !important;
+}
+.view-all {
+  border: 1px solid #fff !important;
+  border-top: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin: -15px;
+}

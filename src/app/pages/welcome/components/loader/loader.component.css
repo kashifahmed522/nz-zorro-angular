@@ -1,0 +1,17 @@
+:host ::ng-deep .ant-spin-container {
+  width: 100% !important;
+}
+
+.full-screeen {
+  display: flex;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 99;
+  background-color: #c1c1c1;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6 !important;
+}

@@ -10,3 +10,11 @@
     (outPutSearch)="getOutPutSearchValue($event)"
   ></app-search>
 </div>
+
+<!-- spinner -->
+<app-loader
+  *ngIf="serviceStatusData?.isActive"
+  [type]="serviceStatusData?.type"
+  [message]="serviceStatusData?.message"
+  [desc]="serviceStatusData?.desc"
+></app-loader>
