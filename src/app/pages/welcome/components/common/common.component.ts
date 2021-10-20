@@ -60,16 +60,10 @@ export class CommonComponent implements OnInit {
         this.form.addControl(
           x.name,
           new FormControl(
-            x.value || '',
-            x.required ? Validators.required : null,
-            x.disabled ? x.disabled : null
+            { value: x.value || '', disabled: x.disabled },
+            x.required ? Validators.required : null
           )
         );
-
-        // this.form.addControl(
-        //   x.name,
-        //   new FormControl({ value: x.value || '', disabled: x.disabled }, Validators.required ?)
-        // );
       }
     });
     this.formChanges();

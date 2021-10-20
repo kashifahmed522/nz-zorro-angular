@@ -22,6 +22,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       required: true,
       className: 'jobName-className',
       gridColumn: '',
+      disabled: false,
     },
     {
       type: 'text',
@@ -30,6 +31,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       value: '',
       required: true,
       className: 'jobCode-className',
+      disabled: false,
     },
     {
       type: 'dropdown',
@@ -39,6 +41,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       required: true,
       className: 'selectCalendar-className',
       multiSelect: false,
+      disabled: false,
       options: [
         { key: 'in', label: 'India' },
         { key: 'us', label: 'USA' },
@@ -54,6 +57,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       required: true,
       className: 'frequency-className',
       multiSelect: false,
+      disabled: false,
       options: [
         { key: 'in', label: 'India' },
         { key: 'us', label: 'USA' },
@@ -67,6 +71,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       label: 'Billing From',
       value: '',
       required: true,
+      disabled: false,
       className: 'birthDate-className',
       dateFormat: 'YYYY-MM-dd',
       placeholder: 'Please select Billing From',
@@ -77,6 +82,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       label: 'Billing To',
       value: '',
       required: true,
+      disabled: false,
       className: 'billingTo-className',
       dateFormat: 'YYYY-MM-dd',
       placeholder: 'Please select Billing To',
@@ -87,6 +93,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       label: 'Execute/Start Time(UTC)',
       value: '',
       required: true,
+      disabled: false,
       className: 'executeTime-className',
       dateFormat: '',
       placeholder: 'Please select Execute/Start Time(UTC)',
@@ -97,6 +104,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       label: 'Status',
       value: '',
       required: false,
+      disabled: false,
       className: 'status-className',
     },
     {
@@ -105,6 +113,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       label: 'Depend On',
       value: 'in',
       required: false,
+      disabled: false,
       className: 'dependOn-className',
       multiSelect: false,
       options: [
@@ -120,6 +129,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       label: 'Request Method',
       value: 'post',
       required: true,
+      disabled: false,
       className: 'requestMethod-className',
       multiSelect: false,
       options: [
@@ -135,6 +145,7 @@ export class CreateEditComponent implements OnInit, OnDestroy {
       label: 'Rest URI',
       value: '',
       required: true,
+      disabled: false,
       gridColumn: '2 / span 2',
       className: 'restURI-className',
     },
